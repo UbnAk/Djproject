@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+</head>
+
+<body>
+    <h1>Order List</h1>
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Client</th>
+            <th>Order Date</th>
+            <th>Product</th>
+            <th>Quantity</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.client }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>
+                {% for product in order.products.all %}
+                {{ product.name }}<br>
+                {% endfor %}
+            </td>
+            <td>
+                {% for product in order.products.all %}
+                {{ product.quantity }}<br>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
